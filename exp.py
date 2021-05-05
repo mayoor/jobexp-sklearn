@@ -5,5 +5,6 @@ def train():
 def test():
     print("I am testing")
 
-def echo(param):
-    print(f"Echo: {param}")
+
+def echo(name):
+    print(f"Echo: {name}")
