@@ -1,10 +1,10 @@
-def train():
-    print("I am training")
+def train(logger, **kwargs):
+    logger.log("I am training")
 
 
-def test():
-    print("I am testing")
+def test(logger, **kwargs):
+    logger.log("I am testing")
 
 
-def echo(name):
-    print(f"Echo: {name}")
+def echo(name, logger, **kwargs):
+    logger.log(f"Echo: {name}")
