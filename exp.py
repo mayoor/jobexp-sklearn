@@ -11,7 +11,7 @@ import os
 def train(logger=None, **kwargs):
     if not logger:
         import logging
-        logger = logging.getLogger("mayoor.sklearn.trainer")
+        logger = logging.getlogger("mayoor.sklearn.trainer")
     boston_data = load_boston()
     df = pd.DataFrame(boston_data.data, columns=boston_data.feature_names)
     target = boston_data.target
@@ -31,7 +31,7 @@ def train(logger=None, **kwargs):
 def test(logger=None, **kwargs):
     if not logger:
         import logging
-        logger = logging.getLogger("mayoor.sklearn.tester")
+        logger = logging.getlogger("mayoor.sklearn.tester")
     logger.log("I am testing")
 
 
