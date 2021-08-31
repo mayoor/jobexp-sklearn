@@ -8,7 +8,10 @@ from sklearn.metrics import r2_score
 import os
 
 
-def train(logger, **kwargs):
+def train(logger=None, **kwargs):
+    if not logger:
+        import logging
+        logger = logging.getLogger("mayoor.sklearn.trainer")
     boston_data = load_boston()
     df = pd.DataFrame(boston_data.data, columns=boston_data.feature_names)
     target = boston_data.target
@@ -25,9 +28,12 @@ def train(logger, **kwargs):
         joblib.dump(rf_model, mf)
 
 
-def test(logger, **kwargs):
+def test(logger=None, **kwargs):
+    if not logger:
+        import logging
+        logger = logging.getLogger("mayoor.sklearn.tester")
     logger.log("I am testing")
 
 
-def echo(name, logger, **kwargs):
+def echo(name, logger=None, **kwargs):
     logger.log(f"Echo: {name}")
