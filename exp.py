@@ -20,7 +20,7 @@ def train(logger=None, **kwargs):
         df, target, test_size=0.2, random_state=42
     )
     rf_model.fit(xtrain, ytrain)
-    logger.log(f"Test score is: {r2_score(ytest, rf_model.predict(xtest))}")
+    logger.info(f"Test score is: {r2_score(ytest, rf_model.predict(xtest))}")
     output_dir = os.environ["OUTPUT_DIR"]
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -32,8 +32,8 @@ def test(logger=None, **kwargs):
     if not logger:
         import logging
         logger = logging.getLogger("mayoor.sklearn.tester")
-    logger.log("I am testing")
+    logger.info("I am testing")
 
 
 def echo(name, logger=None, **kwargs):
-    logger.log(f"Echo: {name}")
+    logger.info(f"Echo: {name}")
