@@ -21,9 +21,9 @@ def train(logger=None, **kwargs):
     )
     rf_model.fit(xtrain, ytrain)
     print(f"Test score is: {r2_score(ytest, rf_model.predict(xtest))}")
-    output_dir = os.environ["OUTPUT_DIR"]
+    output_dir = os.path.expanduser(os.environ.get("OUTPUT_DIR", "tmp"))
     if not os.path.exists(output_dir):
-        os.makedirs(os.path.expanduser(output_dir))
+        os.makedirs(output_dir)
     with open(os.path.join(output_dir, "model.jlib"), "wb") as mf:
         joblib.dump(rf_model, mf)
 
