@@ -20,10 +20,10 @@ def train(logger=None, **kwargs):
         df, target, test_size=0.2, random_state=42
     )
     rf_model.fit(xtrain, ytrain)
-    logger.info(f"Test score is: {r2_score(ytest, rf_model.predict(xtest))}")
+    print(f"Test score is: {r2_score(ytest, rf_model.predict(xtest))}")
     output_dir = os.environ["OUTPUT_DIR"]
     if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
+        os.makedirs(os.path.expanduser(output_dir))
     with open(os.path.join(output_dir, "model.jlib"), "wb") as mf:
         joblib.dump(rf_model, mf)
 
@@ -32,8 +32,8 @@ def test(logger=None, **kwargs):
     if not logger:
         import logging
         logger = logging.getLogger("mayoor.sklearn.tester")
-    logger.info("I am testing")
+    print("I am testing")
 
 
 def echo(name, logger=None, **kwargs):
-    logger.info(f"Echo: {name}")
+    print(f"Echo: {name}")
